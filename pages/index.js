@@ -5,13 +5,14 @@ import styles from '../styles/Home.module.css'
 import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import Link from 'next/link'
+import Search from './Search'
 export default function Home() {
   return (
     <Wrapper>
       <Map />
       <ActionItems>
         <Header>
-          <UberLogo src='https://i.ibb.co/84stgjq/uber-texhnologies-new-20218114.jpg' />
+            <UberLogo src='https://i.ibb.co/84stgjq/uber-texhnologies-new-20218114.jpg' />
           <Profile>
             <Name>Rafeh Qazi</Name>
             <UserImage src='https://lh3.googleusercontent.com/a-/AOh14GiD9MBH2IcIdXX8uw40dBSdCkjbAbabGqJPsXaE=s96-c' />
@@ -24,14 +25,18 @@ export default function Home() {
               Ride
             </ActionButton>
           </Link>
-          <ActionButton>
-            <ActionButtonImage src='https://i.ibb.co/n776JLm/bike.png' />
-            Wheels
-          </ActionButton>
-          <ActionButton>
-            <ActionButtonImage src='https://i.ibb.co/5RjchBg/uberschedule.png' />
-            Reserve
-          </ActionButton>
+          <Link href='/search'>
+            <ActionButton>
+              <ActionButtonImage src='https://i.ibb.co/n776JLm/bike.png' />
+              Ride
+            </ActionButton>
+          </Link>
+          <Link href='/search'>
+            <ActionButton>
+              <ActionButtonImage src='https://i.ibb.co/5RjchBg/uberschedule.png' />
+              Ride
+            </ActionButton>
+          </Link>
         </ActionButtons>
         <InputButton>Where to?</InputButton>
       </ActionItems>
