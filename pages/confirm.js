@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import RideSelector from './components/RideSelector'
 
 function Confirm() {
@@ -14,8 +15,8 @@ function Confirm() {
     console.log('pickup', pickup);
     console.log('dropoff', dropoff);
 
-    const [pickupCoordinates, setPickupCoordinates] = useState()
-    const [dropoffCoordinates, setDropoffCoordinates] = useState()
+    const [pickupCoordinates, setPickupCoordinates] = useState([0, 0])
+    const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0])
 
     const getPickUpCoordinates = (pickup) => {
         // const Pickup = 'Santa Monica';
@@ -28,7 +29,6 @@ function Confirm() {
             .then(response => response.json())
             .then(data => {
                 setPickupCoordinates(data.features[0].center); // get coordinates from features arr
-                // console.log(data.features[0].center); // get coordinates from features arr
             })
     }
 
@@ -42,7 +42,6 @@ function Confirm() {
         )
             .then(response => response.json())
             .then(data => {
-                // console.log(data.features[0].center); // get coordinates from features arr
                 setDropoffCoordinates(data.features[0].center); // get coordinates from features arr
             })
     }
@@ -53,14 +52,18 @@ function Confirm() {
 
     return (
         <Wrapper>
+            <Link href='/search'>
+            <BackButton src='https://img.icons8.com/ios-filled/50/000000/left.png'/>
+            </Link>
             <Map
                 pickupCoordinates={pickupCoordinates}
                 dropoffCoordinates={dropoffCoordinates}
             />
             <RideContainer>
-                {/* {pickupCoordinates}
-                {dropoffCoordinates} */}
-                <RideSelector />
+                <RideSelector 
+                    pickupCoordinates={pickupCoordinates}
+                    dropoffCoordinates={dropoffCoordinates}
+                />
                 <ConfirmButtonContaienr>
                     <ConfirmButton>Confirm UberX</ConfirmButton>
                 </ConfirmButtonContaienr>
@@ -72,6 +75,7 @@ function Confirm() {
 export default Confirm
 
 const Wrapper = tw.div`flex flex-col flex-1 h-screen`
+const BackButton = tw.img`h-12 absolute z-20 top-2 left-4 bg-white rounded-full cursor-pointer`
 const RideContainer = tw.div`flex-1 h-1/2 flex flex-col`
 const ConfirmButtonContaienr = tw.div``
-const ConfirmButton = tw.div`bg-black text-white text-center text-xl m-4 py-4 rounded-full`
+const ConfirmButton = tw.div`bg-black text-white text-center text-xl m-4 py-4 rounded-full cursor-pointer`

@@ -58,11 +58,11 @@ const Wrapper = tw.div`
 h-screen bg-gray-200
 `
 const ButtonContainer = tw.div`
-bg-white px-4
+bg-white px-4 pt-2 
 `
 const BackButton = tw.img`h-12 cursor-pointer`
 const InputContainer = tw.div`
-bg-white flex items-center px-4 pb-2 
+bg-white flex items-center px-4  
 `
 const FormToIcon = tw.div`
 flex flex-col mr-2 items-center
@@ -79,4 +79,4 @@ h-10 bg-gray-200 my-2 p-2 rounded-2 outline-none border-none
 const PlusIcon = tw.img`h-10 w-10 bg-gray-200 rounded-full ml-3`
 const SavedPlaces = tw.div`flex items-center bg-white px-4 p-2 my-3`
 const StarIcon = tw.img`h-10 w-10 bg-gray-400 p-2 mr-2 rounded-full`
-const ConfirmButton = tw.div`bg-black text-white p-3 text-center text-2xl rounded-full mx-20 cursor-pointer hover:bg-gray-700 transition`
+const ConfirmButton = tw.button`w-full bg-black text-white p-3 text-center text-2xl rounded-full cursor-pointer hover:bg-gray-900 transition`
