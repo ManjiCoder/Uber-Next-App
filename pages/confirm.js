@@ -12,8 +12,8 @@ function Confirm() {
 
     const router = useRouter()
     const { pickup, dropoff } = router.query
-    console.log('pickup', pickup);
-    console.log('dropoff', dropoff);
+    // console.log('pickup', pickup);
+    // console.log('dropoff', dropoff);
 
     const [pickupCoordinates, setPickupCoordinates] = useState([0, 0])
     const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0])
@@ -43,6 +43,7 @@ function Confirm() {
             .then(response => response.json())
             .then(data => {
                 setDropoffCoordinates(data.features[0].center); // get coordinates from features arr
+                // console.log(data.features[0].center); // get coordinates from features arr
             })
     }
     useEffect(() => {
@@ -78,4 +79,4 @@ const Wrapper = tw.div`flex flex-col flex-1 h-screen`
 const BackButton = tw.img`h-12 absolute z-20 top-2 left-4 bg-white rounded-full cursor-pointer`
 const RideContainer = tw.div`flex-1 h-1/2 flex flex-col`
 const ConfirmButtonContaienr = tw.div``
-const ConfirmButton = tw.div`bg-black text-white text-center text-xl m-4 py-4 rounded-full cursor-pointer`
+const ConfirmButton = tw.button` w-full bg-black text-white text-center text-2xl my-4 py-4 rounded-full hover:bg-gray-900 transition`

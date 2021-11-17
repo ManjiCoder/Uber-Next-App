@@ -46,7 +46,9 @@ function Search() {
                     dropoff: dropOff
                 }
             }}>
-                <ConfirmButton>Confirm Locations</ConfirmButton>
+                <ConfirmButtonContaienr>
+                    <ConfirmButton disabled={pickUp.length === 0, dropOff.length === 0}>Confirm Location</ConfirmButton>
+                </ConfirmButtonContaienr>
             </Link>
         </Wrapper>
     )
@@ -79,4 +81,5 @@ h-10 bg-gray-200 my-2 p-2 rounded-2 outline-none border-none
 const PlusIcon = tw.img`h-10 w-10 bg-gray-200 rounded-full ml-3`
 const SavedPlaces = tw.div`flex items-center bg-white px-4 p-2 my-3`
 const StarIcon = tw.img`h-10 w-10 bg-gray-400 p-2 mr-2 rounded-full`
+const ConfirmButtonContaienr = tw.div``
 const ConfirmButton = tw.button`w-full bg-black text-white p-3 text-center text-2xl rounded-full cursor-pointer hover:bg-gray-900 transition`

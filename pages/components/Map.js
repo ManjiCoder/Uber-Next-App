@@ -5,14 +5,15 @@ import mapboxgl from 'mapbox-gl'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFuamkyMSIsImEiOiJja3QwNG16bXUxeDM2MnBwdWoyMnY4am9qIn0.AGU9ohR8IlKK2wCPtK7NSA';
 
-const map = (props) => {
+const Map = (props) => {
    
     // What are Components? Reusable ui element
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: "map",
             style: 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
-            center: [-99.29011, 39.39172],
+            // center: [-99.29011, 39.39172], //    USA
+            center: [78.476681027237, 22.1991660760527], //   INDIA
             zoom: 3,
         })
         
@@ -49,7 +50,7 @@ const map = (props) => {
     )
 }
 
-export default map
+export default Map
 
 const Wrapper = tw.div`
 flex-1 h-1/2`

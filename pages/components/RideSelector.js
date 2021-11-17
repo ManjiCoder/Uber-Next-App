@@ -31,7 +31,7 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
                             <Service>{car.service}</Service>
                             <Time>5min away</Time>
                         </CarDetails>
-                        <Price>{'$' + (rideDuration * car.multiplier).toFixed(2)}</Price>
+                        <Price>{(rideDuration * car.multiplier).toFixed(2)+" Rs"}</Price>
                         {/* <Price>$21.00</Price> */}
                     </Car>
                 ))}
