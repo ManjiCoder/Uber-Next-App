@@ -39,11 +39,7 @@ const Map = (props) => {
             // .setLngLat([-99.29011, 39.39172])
             .addTo(map);
     }
-
-    // useEffect(()=>{
-    //     console.log(props.pickupCoordinates);
-    //     console.log(props.dropoffCoordinates);
-    // },[])
+    
     return (
         <Wrapper id="map">
         </Wrapper>
