@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 // import React from 'react'
 import tw from "tailwind-styled-components";
-import { carList } from "../data/carList";
+import { carList } from "../../public/data/carList";
 
 function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
   const [rideDuration, setRideDuration] = useState(0);
@@ -19,6 +19,7 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
       .then((data) => {
         setRideDuration(data.routes[(0, 0)]?.duration / 100);
       });
+    console.log(carList);
   }, [pickupCoordinates, dropoffCoordinates]);
   return (
     <Wrapper>
