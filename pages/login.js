@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import tw from "tailwind-styled-components";
 import { useRouter } from "next/router";
-import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signInWithRedirect } from "firebase/auth";
 import { auth, provider } from "../firebase";
 
 function Login() {
@@ -21,7 +21,7 @@ function Login() {
       <UberLogo src="https://i.ibb.co/ZMhy8ws/uber-logo.png" />
       <Title>Login to access your account</Title>
       <HeadImage src="https://i.ibb.co/CsV9RYZ/login-image.png" />
-      <SignInButton onClick={() => signInWithPopup(auth, provider)}>
+      <SignInButton onClick={() => signInWithRedirect(auth, provider)}>
         Sign in with Google{" "}
         <GoogleLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" />
       </SignInButton>
