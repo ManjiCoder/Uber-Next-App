@@ -19,7 +19,7 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
       .then((data) => {
         setRideDuration(data.routes[(0, 0)]?.duration / 100);
       });
-    console.log(carList);
+    // console.log(carList);
   }, [pickupCoordinates, dropoffCoordinates]);
   return (
     <Wrapper>
@@ -32,7 +32,10 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
               <Service>{car.service}</Service>
               <Time>5min away</Time>
             </CarDetails>
-            <Price>{(rideDuration * car.multiplier).toFixed(2) + " Rs"}</Price>
+            <Price>
+              <CurrencySymbol>₹</CurrencySymbol>
+              {Math.round(rideDuration * 7 * car.multiplier)}
+            </Price>
             {/* <Price>$21.00</Price> */}
           </Car>
         ))}
@@ -43,7 +46,7 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
 
 export default RideSelector;
 
-const Wrapper = tw.div`flex-1 flex flex-col overflow-y-scroll`;
+const Wrapper = tw.div`flex-1 flex flex-col overflow-y-scroll hideScrollbar`;
 const Title = tw.div` text-gray-500 text-center text-xs py-2 border-b`;
 const CarList = tw.div`overflow-y-scroll`;
 const Car = tw.div`flex p-4 items-center`;
@@ -51,4 +54,5 @@ const CarImgage = tw.img`h-14 mr-4`;
 const CarDetails = tw.div`flex-1`;
 const Service = tw.div`font-medium`;
 const Time = tw.div`text-xs text-blue-500`;
-const Price = tw.div`text-ms`;
+const Price = tw.div`font-medium`;
+const CurrencySymbol = tw.span`mr-0.5 font-bold font-sans`;

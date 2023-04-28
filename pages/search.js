@@ -2,14 +2,26 @@
 import { useState } from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Search() {
   const [pickUp, setpickUp] = useState("");
   const [dropOff, setdropOff] = useState("");
+  const navigate = useRouter();
   // console.log(pickUp);
   // console.log(dropOff);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate.push({
+      pathname: "/confirm",
+      query: {
+        pickup: pickUp,
+        dropoff: dropOff,
+      },
+    });
+  };
   return (
-    <Wrapper>
+    <FormWrapper onSubmit={handleSearch}>
       <ButtonContainer>
         <Link href="/">
           <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
@@ -39,28 +51,22 @@ function Search() {
         <StarIcon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
         Saved Places
       </SavedPlaces>
-      <Link
-        href={{
-          pathname: "/confirm",
-          query: {
-            pickup: pickUp,
-            dropoff: dropOff,
-          },
-        }}
-      >
-        <ConfirmButtonContaienr>
-          <ConfirmButton disabled={pickUp.length === 0 && dropOff.length === 0}>
-            Confirm Location
-          </ConfirmButton>
-        </ConfirmButtonContaienr>
-      </Link>
-    </Wrapper>
+
+      <ConfirmButtonContaienr>
+        <ConfirmButton
+          type="submit"
+          disabled={pickUp.length === 0 && dropOff.length === 0}
+        >
+          Confirm Location
+        </ConfirmButton>
+      </ConfirmButtonContaienr>
+    </FormWrapper>
   );
 }
 
 export default Search;
 
-const Wrapper = tw.div`
+const FormWrapper = tw.form`
 h-screen bg-gray-200
 `;
 const ButtonContainer = tw.div`
@@ -81,6 +87,7 @@ flex flex-col flex-1
 `;
 const Input = tw.input`
 h-10 bg-gray-200 my-2 p-2 rounded-2 outline-none border-none
+capitalize
 `;
 const PlusIcon = tw.img`h-10 w-10 bg-gray-200 rounded-full ml-3`;
 const SavedPlaces = tw.div`flex items-center bg-white px-4 p-2 my-3`;
